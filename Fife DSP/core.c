@@ -1,10 +1,3 @@
-#include "stdint.h"
-#include "stdbool.h"
-#include <stdio.h>
-#define BUFFER_SIZE 256
-#define on_each_frame for(int frame=0; frame<BUFFER_SIZE; frame++)
-
-
 /*
 Fife DSP
 
@@ -19,6 +12,14 @@ possible when defining core functions.
 A big goal of this library is READABILITY!! 
 */
 
+#ifndef CORE_C
+#define CORE_C
+
+#include "stdint.h"
+#include "stdbool.h"
+#include <stdio.h>
+#define BUFFER_SIZE 256
+#define on_each_frame for(int frame=0; frame<BUFFER_SIZE; frame++)
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,7 +37,8 @@ struct AudioBufferU{
     uint32_t bias;
     uint32_t buffer[BUFFER_SIZE];
 };
-//Float based audio buffer data structure. This is meant to be a mathmatical representation centered around zero. 
+
+//Float based audio buffer data structure. This is meant to be a mathmatical representation centered around zero with range -1 to 1. *
 
 struct AudioBufferF{
     float buffer[BUFFER_SIZE];
@@ -79,10 +81,31 @@ AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
         output.buffer[frame] = (1 + input.buffer[frame]) 
                                 * output.bit_depth
                                 / 2;
+
+        /*
+        A Branchless Lesson:
+
+        This next portion is an example of a branchless choice function. The idea is we can optimize away choice statements that might cause excessive jumping in the 
+        compiled assembly file. It is done by multiplying each branch condition by the resulting number and adding all the resultant branches together.
+        
+        Like so:
+
+        result = (result_of_branch_1 * (branch_1_condition))
+                 + (result_of_branch_2* (branch_2_condition))
+                 ...etc 
+
+        It is important to note that this only works if the branches are independent of each other. 
+        This structure should be chosen over if/else statements when dealing with simple numerical choice operations, such as checking to see if the
+        returned buffer is within the bit depth range:
+        */
+
+        output.buffer[frame] = (bit_depth * (output.buffer[frame] > bit_depth))
+                                + (output.buffer[frame] * (output.buffer[frame] < bit_depth && output.buffer[frame] >= 0));                               
     }
     return output;
 }
 
+/*
 //Stereo Counterparts to "ToFloat" and "ToUnsigned"
 StereoBufferF ToFloat(StereoBufferU input){
     StereoBufferF output;
@@ -97,6 +120,5 @@ StereoBufferU ToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth)
     output.right = ToUnsigned(input.right, bias, bit_depth);
     return output;
 }
-
-
-
+*/
+#endif

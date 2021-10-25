@@ -3,4 +3,5 @@
 .vscode/tasks.json
 Fife DSP/core.exe
 Fife DSP/main.exe
+Fife DSP/test.exe
 *.exe

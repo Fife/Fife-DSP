@@ -78,8 +78,8 @@ AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
     output.bit_depth = bit_depth;
     output.bias = bias;
     on_each_frame{
-        output.buffer[frame] = (1 + input.buffer[frame]) 
-                                * output.bit_depth
+        output.buffer[frame] = ((1 + input.buffer[frame]) 
+                                * output.bit_depth)
                                 / 2;
 
         /*
@@ -99,7 +99,7 @@ AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
         returned buffer is within the bit depth range:
         */
 
-        output.buffer[frame] = (bit_depth * (output.buffer[frame] > bit_depth))
+        output.buffer[frame] = (bit_depth * (output.buffer[frame] >= bit_depth))
                                 + (output.buffer[frame] * (output.buffer[frame] < bit_depth && output.buffer[frame] >= 0));                               
     }
     return output;

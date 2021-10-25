@@ -1,8 +1,3 @@
-#ifndef BASIC_FUNCTIONS_C
-#define BASIC_FUNCTIONS_C
-
-#include "core.c"
-
 /*
 
 Fife DSP
@@ -26,6 +21,11 @@ Because of this, they can potentially be destructive, and require a pointer to a
 This is done to minimize stack usage, since constantly creating new structs bloats memory. 
 
 */
+
+#ifndef BASIC_FUNCTIONS_C
+#define BASIC_FUNCTIONS_C
+
+#include "core.c"
 
 // Gain Control takes a pointer to AudioBufferF type and applys a multiplicitive gain.
 // Lower gain < 1 (Unity) < Higher Gain

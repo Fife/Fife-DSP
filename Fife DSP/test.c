@@ -1,15 +1,13 @@
 #include "core.c"
 #include "basic_functions.c"
+#include "basic_waveforms.c"
 
 //Test Portion
 AudioBufferU u_buff;
 AudioBufferF f_buff;
 int main(){
-    on_each_frame{
-        f_buff.buffer[frame] = 1;
-    }
 
-    GainControl(&f_buff,2);
-
+    f_buff = GenerateTriangleWave();
+    u_buff = ToUnsigned(f_buff,2048 ,4096);
     return 0;
 }

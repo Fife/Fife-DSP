@@ -105,20 +105,19 @@ AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
     return output;
 }
 
-/*
 //Stereo Counterparts to "ToFloat" and "ToUnsigned"
-StereoBufferF ToFloat(StereoBufferU input){
+StereoBufferF StereoToFloat(StereoBufferU input){
     StereoBufferF output;
     output.left = ToFloat(input.left);
     output.right = ToFloat(input.right);
     return output;
 }
 
-StereoBufferU ToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth){
+StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth){
     StereoBufferU output;
     output.left = ToUnsigned(input.left, bias, bit_depth);
     output.right = ToUnsigned(input.right, bias, bit_depth);
     return output;
 }
-*/
+
 #endif

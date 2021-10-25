@@ -29,12 +29,11 @@ AudioBufferF GenerateSinwave(){
     return sinwave;
 }
 
+//This function generates a triangle wave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
 AudioBufferF GenerateTriangleWave(){
     AudioBufferF triwave;
     on_each_frame{
-         triwave.buffer[frame] = ((frame/(BUFFER_SIZE*0.25)))*(frame<=((int)BUFFER_SIZE*0.25))
-                                +(1 - ((frame-(BUFFER_SIZE*0.25))/(BUFFER_SIZE*0.25)))*(frame>(BUFFER_SIZE*0.25) && frame<=(BUFFER_SIZE*0.75))
-                                +((frame - (BUFFER_SIZE*0.75))/(BUFFER_SIZE*0.25) - 1)*(frame>(BUFFER_SIZE*0.75));
+         triwave.buffer[frame] = ((2/PI)*asin(sin(2*PI*((float)frame/BUFFER_SIZE))));
     }
     return triwave;
 }

@@ -9,9 +9,7 @@ AudioBufferF f_buff;
 int main(){
 
     f_buff = GenerateSinWave(128);
+    GainControl(f_buff, 2.0);
     u_buff = ToUnsigned(f_buff,2048 ,4096);
-    for (int i=0; i<f_buff.buffer.size();i++){
-        std::cout<<f_buff.buffer.at(i)<<"\n";
-    }
     return 0;
 }

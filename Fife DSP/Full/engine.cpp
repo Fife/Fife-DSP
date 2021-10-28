@@ -1,19 +1,20 @@
 #include "engine.h"
 
-void Init(int sample_rate, int buffer_size, int num_channels){
+DSPEngine::DSPEngine(int sample_rate, int buffer_size, int num_channels){
 /*
 Initialize Engine 
 - Populate vector of channels 
+- Populate vectors of DSP functions within channels
 - Assign Hardware Blocks to channels
 - Create and initialize Channel Buffers
 */
 };
-void UpdateInputs(){
+void DSPEngine::UpdateInputs(){
 //Grab next sample from hardware input blocks
 };
-void UpdateChannels(){
+void DSPEngine::UpdateChannels(){
 //perfom DSP on each channel
 };
-void UpdateOutputs(){
+void DSPEngine::UpdateOutputs(){
 //Update the hardware output blocks
 };

@@ -28,9 +28,10 @@ typedef struct StereoBufferU StereoBufferU;
 typedef struct StereoBufferF StereoBufferF;
 typedef struct Channel Channel;
 
+
 typedef void (*IO_Block)(AudioBufferF);
 typedef struct DSPFunction DSPFunction;
-typedef void (*Operation)(AudioBufferF a, float b);
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~Atomic Structs~~~~~~~~~
@@ -51,8 +52,6 @@ struct AudioBufferF{
 };
 
 struct DSPFunction{
-    //Declaration of function pointer called "function_ptr" that points to the math portion of a DSP function
-    Operation function_ptr; 
     std::string id;
     //0 for off, 1 for on, and -1 for error.
     int status; 

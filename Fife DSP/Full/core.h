@@ -26,7 +26,6 @@ typedef struct AudioBufferU AudioBufferU;
 typedef struct AudioBufferF AudioBufferF;
 typedef struct StereoBufferU StereoBufferU;
 typedef struct StereoBufferF StereoBufferF;
-typedef struct Channel Channel;
 
 
 typedef void (*IO_Block)(AudioBufferF);

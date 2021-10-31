@@ -20,7 +20,7 @@ A big goal of this library is READABILITY!!
 #include <math.h>
 
 //This function generates a sinwave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-AudioBufferF GenerateSinWave(int buffer_size){
+inline AudioBufferF GenerateSinWave(int buffer_size){
     AudioBufferF sinwave;
     float fraction;
     for(int frame=0; frame< buffer_size; frame++){
@@ -31,7 +31,7 @@ AudioBufferF GenerateSinWave(int buffer_size){
 }
 
 //This function generates a triangle wave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-AudioBufferF GenerateTriangleWave(int buffer_size){
+inline AudioBufferF GenerateTriangleWave(int buffer_size){
     AudioBufferF triwave;
     for(int frame=0; frame< buffer_size; frame++){
 
@@ -40,7 +40,7 @@ AudioBufferF GenerateTriangleWave(int buffer_size){
     return triwave;
 }
 
-AudioBufferF GenerateSquareWave(int buffer_size){
+inline AudioBufferF GenerateSquareWave(int buffer_size){
     AudioBufferF squarewave;
     for(int frame=0; frame< buffer_size; frame++){
 

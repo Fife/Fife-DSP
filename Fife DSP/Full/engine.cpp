@@ -1,5 +1,15 @@
 #include "engine.h"
 
+DSPEngine::DSPEngine() {
+	/*
+	Initialize Engine
+	- Populate vector of channels
+	- Populate vectors of DSP functions within channels
+	- Assign Hardware Blocks to channels
+	- Create and initialize Channel Buffers
+	*/
+};
+
 DSPEngine::DSPEngine(int sample_rate, int buffer_size, int num_channels){
 /*
 Initialize Engine 

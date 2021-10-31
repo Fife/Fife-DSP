@@ -11,7 +11,7 @@
 
 
 //Function to convert U_INT_32 Buffer to Float buffer for DSP Algorithms 
-AudioBufferF ToFloat(AudioBufferU input){
+inline AudioBufferF ToFloat(AudioBufferU input){
     AudioBufferF output;
     for(int frame=0; frame<input.buffer.size(); frame++){
         output.buffer.push_back(2*((float)input.buffer.at(frame)-input.bias)
@@ -21,7 +21,7 @@ AudioBufferF ToFloat(AudioBufferU input){
 }
 
 //Function to convert Float buffer to U_INT_32 buffer for writing to ADCs 
-AudioBufferU ToUnsigned(AudioBufferF input, int bias, int bit_depth){
+inline AudioBufferU ToUnsigned(AudioBufferF input, int bias, int bit_depth){
     AudioBufferU output;
     output.bit_depth = bit_depth;
     output.bias = bias;
@@ -54,14 +54,14 @@ AudioBufferU ToUnsigned(AudioBufferF input, int bias, int bit_depth){
 }
 
 //Stereo Counterparts to "ToFloat" and "ToUnsigned"
-StereoBufferF StereoToFloat(StereoBufferU input){
+inline StereoBufferF StereoToFloat(StereoBufferU input){
     StereoBufferF output;
     output.left = ToFloat(input.left);
     output.right = ToFloat(input.right);
     return output;
 }
 
-StereoBufferU StereoToUnsigned(StereoBufferF input, int bias, int bit_depth){
+inline StereoBufferU StereoToUnsigned(StereoBufferF input, int bias, int bit_depth){
     StereoBufferU output;
     output.left = ToUnsigned(input.left, bias, bit_depth);
     output.right = ToUnsigned(input.right, bias, bit_depth);

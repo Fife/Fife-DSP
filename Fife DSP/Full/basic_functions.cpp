@@ -31,7 +31,7 @@ This is done to minimize stack usage, since constantly creating new structs bloa
 // Lower gain < 1 (Unity) < Higher Gain
 // Gain of 0 cancels out all signal.
 
-void GainControl(AudioBufferF input, float gain){
+inline void GainControl(AudioBufferF input, float gain){
     for(int frame =0; frame< input.buffer.size(); frame++){
         input.buffer.at(frame)= input.buffer.at(frame) * gain;
     }

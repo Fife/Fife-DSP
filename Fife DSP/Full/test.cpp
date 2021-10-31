@@ -9,6 +9,8 @@ AudioBufferF f_buff;
 int main(){
 
     //Test Envelope generation by loading a sinwave into an audio buffer 
+    f_buff = GenerateSquareWave(128);
+    f_buff = GenerateTriangleWave(128);
     f_buff = GenerateSinWave(128);
     u_buff = ToUnsigned(f_buff,2048 ,4096);
 

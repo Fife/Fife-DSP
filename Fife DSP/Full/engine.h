@@ -1,4 +1,5 @@
 #include "core.h"
+#include "channel.h"
 
 class DSPEngine{
     public:

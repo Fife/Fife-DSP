@@ -7,3 +7,45 @@ Fife DSP/test.exe
 Business Automation
 *.exe
 .vscode/settings.json
+Fife DSP/Full/Debug/
+Fife DSP/.vs/Fife DSP/config/applicationhost.config
+Fife DSP/.vs/Fife DSP/v16/.suo
+Fife DSP/.vs/Fife DSP/v16/Browse.VC.db
+Fife DSP/.vs/Fife DSP/v16/ipch/AutoPCH/3a4721acb38e4819/CHANNEL.ipch
+Fife DSP/.vs/Fife DSP/v16/ipch/AutoPCH/46793bd9561ebdec/TEST.ipch
+Fife DSP/.vs/Fife DSP/v16/ipch/AutoPCH/4fcdf315fd72c19a/TEST.ipch
+Fife DSP/.vs/Fife DSP/v16/ipch/AutoPCH/d7dde43351f75881/TEST.ipch
+Fife DSP/.vs/Fife DSP/v16/ipch/AutoPCH/e226091690bed0a9/TEST.ipch
+Fife DSP/.vs/ProjectSettings.json
+Fife DSP/.vs/slnx.sqlite
+Fife DSP/.vs/tasks.vs.json
+Fife DSP/.vs/VSWorkspaceState.json
+Fife DSP/CppProperties.json
+Fife DSP/Debug/basic_functions.obj
+Fife DSP/Debug/basic_waveforms.obj
+Fife DSP/Debug/channel.obj
+Fife DSP/Debug/core.obj
+Fife DSP/Debug/Fife DSP.log
+Fife DSP/Debug/Fife DSP.tlog/CL.command.1.tlog
+Fife DSP/Debug/Fife DSP.tlog/CL.read.1.tlog
+Fife DSP/Debug/Fife DSP.tlog/CL.write.1.tlog
+Fife DSP/Debug/Fife DSP.tlog/Fife DSP.lastbuildstate
+Fife DSP/Debug/Fife DSP.tlog/unsuccessfulbuild
+Fife DSP/Debug/test.obj
+Fife DSP/Debug/vc142.pdb
+Fife DSP/Fife DSP.sln
+Fife DSP/Fife DSP.vcxproj
+Fife DSP/Fife DSP.vcxproj.filters
+Fife DSP/Fife DSP.vcxproj.user
+Fife DSP/Full/.vs/FifeDSP Full/v16/.suo
+Fife DSP/Full/.vs/FifeDSP Full/v16/Browse.VC.db
+Fife DSP/Full/.vs/FifeDSP Full/v16/Browse.VC.db-shm
+Fife DSP/Full/.vs/FifeDSP Full/v16/Browse.VC.db-wal
+Fife DSP/Full/.vs/FifeDSP Full/v16/Browse.VC.opendb
+Fife DSP/Full/.vs/FifeDSP Full/v16/ipch/AutoPCH/203c5b5054ec80e6/ENGINE.ipch
+Fife DSP/Full/.vs/FifeDSP Full/v16/ipch/AutoPCH/517c919cf4285f70/TEST.ipch
+Fife DSP/Full/.vs/FifeDSP Full/v16/ipch/AutoPCH/ba86ca9499a8ec7d/CHANNEL.ipch
+Fife DSP/Full/FifeDSP Full.sln
+Fife DSP/Full/FifeDSP Full.vcxproj
+Fife DSP/Full/FifeDSP Full.vcxproj.filters
+Fife DSP/Full/FifeDSP Full.vcxproj.user

@@ -3,6 +3,7 @@
         "stdint.h": "c",
         "vector": "cpp",
         "xiosbase": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "cmath": "cpp"
     }
 }

@@ -37,7 +37,6 @@ typedef void (*Operation)(AudioBufferF a, float b);
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-
 //Atomic audio buffer data structure. All members are unsigned INTs so you can pass the buffer from this struct directly into a DAC
 struct AudioBufferU{
     int bit_depth;
@@ -77,5 +76,5 @@ struct StereoBufferF{
     AudioBufferF right;
 };
 
-#endif
 
+#endif

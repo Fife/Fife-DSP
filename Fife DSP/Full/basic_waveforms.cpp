@@ -25,7 +25,7 @@ AudioBufferF GenerateSinWave(int buffer_size){
     float fraction;
     for(int frame=0; frame< buffer_size; frame++){
         fraction = (float)(frame/(float)buffer_size);
-        sinwave.buffer.push_back(sin(2*PI*fraction) );
+        sinwave.buffer.push_back(sin(2*PI*fraction));
     }
     return sinwave;
 }
@@ -38,5 +38,22 @@ AudioBufferF GenerateTriangleWave(int buffer_size){
         triwave.buffer.push_back((float)((2/PI)*asin(sin(2*PI*((float)frame/buffer_size)))));
     }
     return triwave;
+}
+
+AudioBufferF GenerateSquareWave(int buffer_size){
+    AudioBufferF squarewave;
+    for(int frame=0; frame< buffer_size; frame++){
+
+        for(int frame=0; frame< buffer_size; frame++){
+            float fraction = (float)(frame/(float)buffer_size);
+            squarewave.buffer.push_back(
+                (1/1)*4*sin(PI*fraction*1)
+                + (1/3)*4*sin(PI*fraction*3)
+                + (1/5)*4*sin(PI*fraction*5)
+                + (1/7)*4*sin(PI*fraction*7)
+                + (1/9)*4*sin(PI*fraction*9));
+        }
+    }
+    return squarewave;
 }
 #endif

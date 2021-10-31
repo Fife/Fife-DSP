@@ -6,3 +6,4 @@ Fife DSP/main.exe
 Fife DSP/test.exe
 Business Automation
 *.exe
+.vscode/settings.json

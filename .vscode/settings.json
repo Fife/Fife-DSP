@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "stdint.h": "c",
-        "vector": "cpp",
-        "xiosbase": "cpp",
-        "xstring": "cpp",
-        "cmath": "cpp"
-    }
-}

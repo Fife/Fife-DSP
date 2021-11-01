@@ -18,7 +18,7 @@ A big goal of this library is READABILITY!!
 
 This is a collection of basic DSP algorithms. These functions are meant to operate directly on a AudioBufferF struct. 
 Because of this, they can potentially be destructive, and require a pointer to an AudioBufferF struct. 
-This is done to minimize stack usage, since constantly creating new structs bloats memory. 
+This is done to minimize stack/heap usage, since constantly creating new structs bloats memory. 
 
 */
 

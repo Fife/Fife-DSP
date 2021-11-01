@@ -14,7 +14,7 @@ A big goal of this library is READABILITY!!
 */
 #ifndef BASIC_WAVEFORMS_C
 #define BASIC_WAVEFORMS_C
-#define _USE_MATH_DEFINES
+
 #define PI 3.14159265358979323846
 
 #include "core.c"

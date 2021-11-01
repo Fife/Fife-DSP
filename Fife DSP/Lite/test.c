@@ -1,10 +1,10 @@
-#include "core.c"
+#include "core.h"
 #include "basic_functions.c"
 #include "basic_waveforms.c"
 
 //Test Portion
 AudioBufferU u_buff;
-AudioBufferF f_buff,f2,f3,f5;
+AudioBufferF f_buff;
 int main(){
 
     f_buff = GenerateTriangleWave();

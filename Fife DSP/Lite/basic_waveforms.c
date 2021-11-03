@@ -43,7 +43,7 @@ inline AudioBufferF GenerateSquareWave() {
     AudioBufferF squarewave;
     float fraction;
     on_each_frame{ 
-        fraction = (float)(frame / BUFFER_SIZE);
+        fraction = (float)(frame / (float)BUFFER_SIZE);
         squarewave.buffer[frame] =
             ((1 / 1) * 4 * sin(PI * fraction * 1)
             + (1 / 3) * 4 * sin(PI * fraction * 3)
@@ -57,14 +57,12 @@ inline AudioBufferF GenerateSquareWave() {
 inline AudioBufferF GenerateSawtoothWave() {
     AudioBufferF sawwave;
     float fraction;
-    float value;
+    float inner_argument, cotangent;
     on_each_frame{
-        value = 0;
-        fraction = (float)(frame / BUFFER_SIZE);
-        for (int n = 0; n < 10; n++) {
-            value = value + sin(((n + 1) * fraction * PI * 2)) / (2 * (n + 1));
-        }
-        sawwave.buffer[frame] = value;
+        fraction = (float)(frame / (float)BUFFER_SIZE);
+        inner_argument = fraction * PI;
+        cotangent = (cos(inner_argument)) / (sin(inner_argument));
+        sawwave.buffer[frame] = (-2/PI)*((float)atan(cotangent));
     }
     return sawwave;
 }

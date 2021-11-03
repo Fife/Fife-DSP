@@ -9,7 +9,7 @@ int main(){
 
     f_buff = GenerateTriangleWave();
     f_buff = GenerateSineWave();
-    f_buff = GenerateSquareWave();
+    f_buff = GenerateSawtoothWave();
     u_buff = ToUnsigned(f_buff,2048 ,4096);
     return 0;
 }

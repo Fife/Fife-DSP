@@ -39,10 +39,11 @@ inline AudioBufferF GenerateTriangleWave(){
 }
 
 //This function generates a square wave composed of sinwaves centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateSquareWave(i) {
+inline AudioBufferF GenerateSquareWave() {
     AudioBufferF squarewave;
+    float fraction;
     on_each_frame{ 
-        float fraction = (float)(frame / BUFFER_SIZE);
+        fraction = (float)(frame / BUFFER_SIZE);
         squarewave.buffer[frame] =
             ((1 / 1) * 4 * sin(PI * fraction * 1)
             + (1 / 3) * 4 * sin(PI * fraction * 3)
@@ -51,5 +52,20 @@ inline AudioBufferF GenerateSquareWave(i) {
             + (1 / 9) * 4 * sin(PI * fraction * 9));
         }
     return squarewave;
+}
+
+inline AudioBufferF GenerateSawtoothWave() {
+    AudioBufferF sawwave;
+    float fraction;
+    float value;
+    on_each_frame{
+        value = 0;
+        fraction = (float)(frame / BUFFER_SIZE);
+        for (int n = 0; n < 10; n++) {
+            value = value + sin(((n + 1) * fraction * PI * 2)) / (2 * (n + 1));
+        }
+        sawwave.buffer[frame] = value;
+    }
+    return sawwave;
 }
 #endif

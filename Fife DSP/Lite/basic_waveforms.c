@@ -21,47 +21,55 @@ A big goal of this library is READABILITY!!
 #include "math.h"
 
 //This function generates a sinwave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateSineWave(){
+inline AudioBufferF GenerateSineWave(float phase){
     AudioBufferF sinwave;
+    float fraction, phase_angle;
+    phase_angle = (phase * (PI / 180.0));
     on_each_frame{
-        sinwave.buffer[frame] = sin((2*PI) * ((float)frame/BUFFER_SIZE));
+        fraction = (float)frame / BUFFER_SIZE;
+        sinwave.buffer[frame] = sin(((2*PI) * fraction) + phase_angle);
     }
     return sinwave;
 }
 
 //This function generates a triangle wave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateTriangleWave(){
+inline AudioBufferF GenerateTriangleWave(float phase){
     AudioBufferF triwave;
+    float fraction; 
+    float phase_angle = (phase * (PI / 180.0));
     on_each_frame{
-         triwave.buffer[frame] = ((2/PI)*asin(sin(2*PI*((float)frame/BUFFER_SIZE))));
+        fraction = (float)frame / BUFFER_SIZE;
+         triwave.buffer[frame] = ((2/PI)*asin(sin((2*PI * fraction) + phase_angle)));
     }
     return triwave;
 }
 
 //This function generates a square wave composed of sinwaves centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateSquareWave() {
+inline AudioBufferF GenerateSquareWave(float phase) {
     AudioBufferF squarewave;
     float fraction;
+    float phase_angle = (phase * (PI / 180.0));
     on_each_frame{ 
-        fraction = (float)(frame / (float)BUFFER_SIZE);
+        fraction = (float)frame / BUFFER_SIZE;
         squarewave.buffer[frame] =
-            ((1 / 1) * 4 * sin(PI * fraction * 1)
-            + (1 / 3) * 4 * sin(PI * fraction * 3)
-            + (1 / 5) * 4 * sin(PI * fraction * 5)
-            + (1 / 7) * 4 * sin(PI * fraction * 7)
-            + (1 / 9) * 4 * sin(PI * fraction * 9));
+            ((1 / 1.0) *  sin((2 * PI * fraction * 1) + phase_angle))
+            + ((1 / 3.0) * sin((2 * PI * fraction * 3) + phase_angle))
+            + ((1 / 5.0) * sin((2 * PI * fraction * 5) + phase_angle))
+            + ((1 / 7.0) * sin((2 * PI * fraction * 7) + phase_angle))
+            + ((1 / 9.0) * sin((2 * PI * fraction * 9) + phase_angle));
         }
     return squarewave;
 }
 
-inline AudioBufferF GenerateSawtoothWave() {
+inline AudioBufferF GenerateSawtoothWave(float phase) {
     AudioBufferF sawwave;
     float fraction;
     float inner_argument, cotangent;
+    float phase_angle = (phase * (PI / 180.0));
     on_each_frame{
-        fraction = (float)(frame / (float)BUFFER_SIZE);
-        inner_argument = fraction * PI;
-        cotangent = (cos(inner_argument)) / (sin(inner_argument));
+        fraction = (float)frame / BUFFER_SIZE;
+        inner_argument = (fraction * PI)/2;
+        cotangent = (cos(inner_argument + phase_angle)) / (sin(inner_argument + phase_angle));
         sawwave.buffer[frame] = (-2/PI)*((float)atan(cotangent));
     }
     return sawwave;

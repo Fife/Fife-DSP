@@ -7,9 +7,9 @@ AudioBufferU u_buff;
 AudioBufferF f_buff;
 int main(){
 
-    f_buff = GenerateTriangleWave();
-    f_buff = GenerateSineWave();
-    f_buff = GenerateSawtoothWave();
+    f_buff = GenerateTriangleWave(180);
+    f_buff = GenerateSquareWave(180);
+    f_buff = GenerateSawtoothWave(270);
     u_buff = ToUnsigned(f_buff,2048 ,4096);
     return 0;
 }

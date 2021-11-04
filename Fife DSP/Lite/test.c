@@ -1,5 +1,5 @@
 #include "core.h"
-#include "basic_functions.c"
+#include "basic_DSP.c"
 #include "basic_waveforms.c"
 
 //Test Portion
@@ -7,6 +7,7 @@ AudioBufferU u_buff;
 AudioBufferF f_buff;
 int main(){
 
+    f_buff = GenerateSineWave(180);
     f_buff = GenerateTriangleWave(180);
     f_buff = GenerateSquareWave(180);
     f_buff = GenerateSawtoothWave(270);

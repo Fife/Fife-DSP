@@ -65,6 +65,21 @@ inline AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_d
     return output;
 }
 
+inline AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2 ) {
+    AudioBufferF output;
+    on_each_frame{
+        output.buffer[frame] = input1.buffer[frame] + input2.buffer[frame];
+    }
+    return output;
+}
+
+inline StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2) {
+    StereoBufferF output;
+    output.left = AddBuffersF(input1.left, input2.left);
+    output.right = AddBuffersF(input1.right, input2.right);
+    return output;
+}
+
 //Stereo Counterparts to "ToFloat" and "ToUnsigned"
 inline StereoBufferF StereoToFloat(StereoBufferU input){
     StereoBufferF output;

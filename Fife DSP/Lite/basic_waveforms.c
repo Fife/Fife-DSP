@@ -15,7 +15,7 @@ A big goal of this library is READABILITY!!
 #ifndef BASIC_WAVEFORMS_C
 #define BASIC_WAVEFORMS_C
 
-#define PI 3.14159265358979323846
+#define PI 3.141592653589
 
 #include "core.c"
 #include "math.h"
@@ -60,6 +60,9 @@ inline AudioBufferF GenerateSquareWave(float phase) {
         }
     return squarewave;
 }
+
+//This function generates a sawtooth wave from the formula:
+// (-2/PI) * arctan(cotangent((PI*x)/p)))
 
 inline AudioBufferF GenerateSawtoothWave(float phase) {
     AudioBufferF sawwave;

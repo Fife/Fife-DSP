@@ -1,6 +1,6 @@
 #include "core.h"
 #include "basic_DSP.c"
-#include "basic_waveforms.c"
+#include "basic_waveforms.h"
 
 //Test Portion
 AudioBufferU u_buff;

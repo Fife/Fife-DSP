@@ -19,9 +19,10 @@ A big goal of this library is READABILITY!!
 
 #include "core.h"
 #include "math.h"
+#include "basic_waveforms.h"
 
 //This function generates a sinwave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateSineWave(float phase){
+AudioBufferF GenerateSineWave(float phase){
     AudioBufferF sinwave;
     float fraction, phase_angle;
     phase_angle = (phase * (PI / 180.0));
@@ -33,7 +34,7 @@ inline AudioBufferF GenerateSineWave(float phase){
 }
 
 //This function generates a triangle wave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateTriangleWave(float phase){
+AudioBufferF GenerateTriangleWave(float phase){
     AudioBufferF triwave;
     float fraction; 
     float phase_angle = (phase * (PI / 180.0));
@@ -45,7 +46,7 @@ inline AudioBufferF GenerateTriangleWave(float phase){
 }
 
 //This function generates a square wave composed of sinwaves centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 
-inline AudioBufferF GenerateSquareWave(float phase) {
+AudioBufferF GenerateSquareWave(float phase) {
     AudioBufferF squarewave;
     float fraction;
     float phase_angle = (phase * (PI / 180.0));
@@ -64,7 +65,7 @@ inline AudioBufferF GenerateSquareWave(float phase) {
 //This function generates a sawtooth wave from the formula:
 // (-2/PI) * arctan(cotangent((PI*x)/p)))
 
-inline AudioBufferF GenerateSawtoothWave(float phase) {
+AudioBufferF GenerateSawtoothWave(float phase) {
     AudioBufferF sawwave;
     float fraction;
     float inner_argument, cotangent;

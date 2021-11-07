@@ -26,18 +26,19 @@ This is done to minimize stack/heap usage, since constantly creating new structs
 #define BASIC_DSP_C
 
 #include "core.h"
+#include "basic_DSP.h"
 
 // Gain Control takes a pointer to AudioBufferF type and applys a multiplicitive gain.
 // Lower gain < 1 (Unity) < Higher Gain
 // Gain of 0 cancels out all signal.
 
-inline void GainControl(AudioBufferF* input, float gain){
+void GainControl(AudioBufferF* input, float gain){
     on_each_frame{
         input->buffer[frame] = input->buffer[frame] * gain;
     }
 }
 
-inline float FindPeak(AudioBufferF* input) {
+float FindPeak(AudioBufferF* input) {
     float peak, min, max;
     min = 0;
     max = 0;
@@ -66,7 +67,7 @@ inline float FindPeak(AudioBufferF* input) {
 //This function scales an Audio Buffer that overshoots 1 or -1 by finding the amount of gain adjustment the signal needs to bring the peaks down to exactly 1 or -1.
 //If the signal does not peak at above 1 this function does not do anything
 
-inline void ScaleToOne(AudioBufferF* input) {
+void ScaleToOne(AudioBufferF* input) {
     // Find maximum or absolute value of minimum, whichever is higher. Call this number peak
     float peak, v_diff, inter_prop, gain_adjust;
     peak = FindPeak(input);

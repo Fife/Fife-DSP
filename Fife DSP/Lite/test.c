@@ -1,5 +1,5 @@
 #include "core.h"
-#include "basic_DSP.c"
+#include "basic_DSP.h"
 #include "basic_waveforms.h"
 
 //Test Portion

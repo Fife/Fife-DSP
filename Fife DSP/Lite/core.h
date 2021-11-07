@@ -42,4 +42,18 @@ struct StereoBufferF {
     AudioBufferF right;
 };
 
+
+/*
+    Function Declarations
+*/
+
+AudioBufferF ToFloat(AudioBufferU input);
+AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth);
+AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2);
+StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2);
+StereoBufferF StereoToFloat(StereoBufferU input);
+StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth);
+void ShiftBufferU(AudioBufferU* input);
+void UpdateBufferU(AudioBufferU* input, float newSample);
+
 #endif

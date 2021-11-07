@@ -25,7 +25,7 @@ This is done to minimize stack/heap usage, since constantly creating new structs
 #ifndef BASIC_DSP_C
 #define BASIC_DSP_C
 
-#include "core.c"
+#include "core.h"
 
 // Gain Control takes a pointer to AudioBufferF type and applys a multiplicitive gain.
 // Lower gain < 1 (Unity) < Higher Gain
@@ -82,4 +82,5 @@ inline void ScaleToOne(AudioBufferF* input) {
         GainControl(input, gain_adjust);
     }
 }
+
 #endif

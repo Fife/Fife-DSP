@@ -23,7 +23,7 @@ A big goal of this library is READABILITY!!
 */
 
 //Function to convert U_INT_32 Buffer to Float buffer for DSP Algorithms 
-inline AudioBufferF ToFloat(AudioBufferU input){
+AudioBufferF ToFloat(AudioBufferU input){
     AudioBufferF output;
     on_each_frame{
         output.buffer[frame] = 2*((float)input.buffer[frame]-input.bias)
@@ -33,7 +33,7 @@ inline AudioBufferF ToFloat(AudioBufferU input){
 }
 
 //Function to convert Float buffer to U_INT_32 buffer for writing to ADCs 
-inline AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
+AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
     AudioBufferU output;
     output.bit_depth = bit_depth;
     output.bias = bias;
@@ -65,7 +65,7 @@ inline AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_d
     return output;
 }
 
-inline AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2 ) {
+AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2 ) {
     AudioBufferF output;
     on_each_frame{
         output.buffer[frame] = input1.buffer[frame] + input2.buffer[frame];
@@ -73,7 +73,7 @@ inline AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2 ) {
     return output;
 }
 
-inline StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2) {
+StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2) {
     StereoBufferF output;
     output.left = AddBuffersF(input1.left, input2.left);
     output.right = AddBuffersF(input1.right, input2.right);
@@ -81,28 +81,29 @@ inline StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input
 }
 
 //Stereo Counterparts to "ToFloat" and "ToUnsigned"
-inline StereoBufferF StereoToFloat(StereoBufferU input){
+StereoBufferF StereoToFloat(StereoBufferU input){
     StereoBufferF output;
     output.left = ToFloat(input.left);
     output.right = ToFloat(input.right);
     return output;
 }
 
-inline StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth){
+StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth){
     StereoBufferU output;
     output.left = ToUnsigned(input.left, bias, bit_depth);
     output.right = ToUnsigned(input.right, bias, bit_depth);
     return output;
 }
 
-inline void ShiftBufferU(AudioBufferU* input) {
+void ShiftBufferU(AudioBufferU* input) {
     for (int i = BUFFER_SIZE - 1; i > 0; i--) {
         input->buffer[i] = input->buffer[i-1];
     }
     input->buffer[0] = 0;
 }
-inline void UpdateBufferU(AudioBufferU* input, float newSample) {
-    ShiftBuffer(input);
+
+void UpdateBufferU(AudioBufferU* input, float newSample) {
+    ShiftBufferU(input);
     input->buffer[0] = newSample;
 }
 

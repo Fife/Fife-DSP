@@ -17,7 +17,7 @@ A big goal of this library is READABILITY!!
 
 #define PI 3.141592653589
 
-#include "core.c"
+#include "core.h"
 #include "math.h"
 
 //This function generates a sinwave centered at 0 with an amplitude of 1 and returns is as an Audio Buffer 

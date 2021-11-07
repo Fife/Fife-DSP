@@ -45,13 +45,13 @@ inline AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_d
         /*
         A Branchless Lesson:
 
-        This next portion is an example of a branchless choice function. The idea is we can optimize away choice statements that might cause excessive jumping in the 
+        This next portion is an example of a branchless choice function. The idea is we can optimize away choice statements (if/else) that might cause excessive jumping in the 
         compiled assembly file. It is done by multiplying each branch condition by the resulting number and adding all the resultant branches together.
         
         Like so:
 
         result = (result_of_branch_1 * (branch_1_condition))
-                 + (result_of_branch_2* (branch_2_condition))
+                 + (result_of_branch_2 * (branch_2_condition))
                  ...etc 
 
         It is important to note that this only works if the branches are independent of each other. 
@@ -93,6 +93,17 @@ inline StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32
     output.left = ToUnsigned(input.left, bias, bit_depth);
     output.right = ToUnsigned(input.right, bias, bit_depth);
     return output;
+}
+
+inline void ShiftBufferU(AudioBufferU* input) {
+    for (int i = BUFFER_SIZE - 1; i > 0; i--) {
+        input->buffer[i] = input->buffer[i-1];
+    }
+    input->buffer[0] = 0;
+}
+inline void UpdateBufferU(AudioBufferU* input, float newSample) {
+    ShiftBuffer(input);
+    input->buffer[0] = newSample;
 }
 
 #endif

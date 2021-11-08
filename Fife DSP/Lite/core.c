@@ -26,6 +26,7 @@ A big goal of this library is READABILITY!!
 AudioBufferF ToFloat(AudioBufferU input){
     AudioBufferF output;
     on_each_frame{
+        //Divide the difference in input from the bias and multiply by 2 to get a range from -1 to 1
         output.buffer[frame] = 2*((float)input.buffer[frame]-input.bias)
                                 / input.bit_depth;
     }
@@ -65,6 +66,7 @@ AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth){
     return output;
 }
 
+//Add 2 Buffers to each other and return the resultant 
 AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2 ) {
     AudioBufferF output;
     on_each_frame{
@@ -102,9 +104,9 @@ void ShiftBufferU(AudioBufferU* input) {
     input->buffer[0] = 0;
 }
 
-void UpdateBufferU(AudioBufferU* input, float newSample) {
+void UpdateBufferU(AudioBufferU* input, float* newSample) {
     ShiftBufferU(input);
-    input->buffer[0] = newSample;
+    input->buffer[0] = &newSample;
 }
 
 #endif

@@ -5,6 +5,7 @@
 #include "stdint.h"
 #include "stdbool.h"
 
+#define SAMPLE_RATE 44100
 #define BUFFER_SIZE 256
 #define on_each_frame for(int frame=0; frame<BUFFER_SIZE; frame++)
 
@@ -47,12 +48,18 @@ struct StereoBufferF {
     Function Declarations
 */
 
+//Buffer Type Conversions:
 AudioBufferF ToFloat(AudioBufferU input);
 AudioBufferU ToUnsigned(AudioBufferF input, uint32_t bias, uint32_t bit_depth);
-AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2);
-StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2);
 StereoBufferF StereoToFloat(StereoBufferU input);
 StereoBufferU StereoToUnsigned(StereoBufferF input, uint32_t bias, uint32_t bit_depth);
+
+
+//Arithmetic Operations on Buffers:
+AudioBufferF AddBuffersF(AudioBufferF input1, AudioBufferF input2);
+StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2);
+
+//Utility Functions
 void ShiftBufferU(AudioBufferU* input);
 void UpdateBufferU(AudioBufferU* input, float newSample);
 

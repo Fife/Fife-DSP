@@ -104,7 +104,7 @@ void ShiftBufferU(AudioBufferU* input) {
     input->buffer[0] = 0;
 }
 
-void UpdateBufferU(AudioBufferU* input, float* newSample) {
+void UpdateBufferU(AudioBufferU* input, uint32_t* newSample) {
     ShiftBufferU(input);
     input->buffer[0] = &newSample;
 }

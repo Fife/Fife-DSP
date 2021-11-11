@@ -9,15 +9,18 @@
 #define BUFFER_SIZE 256
 #define on_each_frame for(int frame=0; frame<BUFFER_SIZE; frame++)
 
+
+typedef struct AudioBufferU AudioBufferU;
+typedef struct AudioBufferF AudioBufferF;
+typedef struct StereoBufferU StereoBufferU;
+typedef struct StereoBufferF StereoBufferF;
+
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~Data Structs~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-typedef struct AudioBufferU AudioBufferU;
-typedef struct AudioBufferF AudioBufferF;
-typedef struct StereoBufferU StereoBufferU;
-typedef struct StereoBufferF StereoBufferF;
 
 //Atomic audio buffer data structure. All members are unsigned INTs so you can pass the buffer from this struct directly into a DAC
 struct AudioBufferU {
@@ -27,7 +30,6 @@ struct AudioBufferU {
 };
 
 //Float based audio buffer data structure. This is meant to be a mathmatical representation centered around zero with range -1 to 1. *
-
 struct AudioBufferF {
     float buffer[BUFFER_SIZE];
 };
@@ -37,7 +39,6 @@ struct StereoBufferU {
     AudioBufferU left;
     AudioBufferU right;
 };
-
 struct StereoBufferF {
     AudioBufferF left;
     AudioBufferF right;
@@ -45,7 +46,9 @@ struct StereoBufferF {
 
 
 /*
-    Function Declarations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~Function Declaractions~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
 //Buffer Type Conversions:
@@ -61,6 +64,6 @@ StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2);
 
 //Utility Functions
 void ShiftBufferU(AudioBufferU* input);
-void UpdateBufferU(AudioBufferU* input, float newSample);
+void UpdateBufferU(AudioBufferU* input, float* newSample);
 
 #endif

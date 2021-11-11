@@ -5,6 +5,7 @@
 //Multiply entire buffer by some constant
 void GainControl(AudioBufferF* input, float gain);
 
+
 float FindPeak(AudioBufferF* input);
 void ScaleToOne(AudioBufferF* input);
 

@@ -6,7 +6,7 @@
 #include "stdbool.h"
 
 #define SAMPLE_RATE 44100
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 64
 #define on_each_frame for(int frame=0; frame<BUFFER_SIZE; frame++)
 
 

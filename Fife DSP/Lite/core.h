@@ -64,6 +64,6 @@ StereoBufferF AddStereoBuffersF(StereoBufferF input1, StereoBufferF input2);
 
 //Utility Functions
 void ShiftBufferU(AudioBufferU* input);
-void UpdateBufferU(AudioBufferU* input, float* newSample);
+void UpdateBufferU(AudioBufferU* input, uint32_t* newSample);
 
 #endif
